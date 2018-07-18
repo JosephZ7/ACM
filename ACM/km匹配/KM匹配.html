@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2017-07-29 周六 09:58 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<meta name="generator" content="Org mode">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga489ffe">1. 求最大权二分匹配的KM算法</a>
+<ul>
+<li><a href="#orga13ccb2">1.1. 简单回顾</a></li>
+<li><a href="#org86fd50d">1.2. 定理：</a></li>
+<li><a href="#org79b0da5">1.3. 模板</a></li>
+<li><a href="#org799dd7d">1.4. 流程</a></li>
+<li><a href="#orge403664">1.5. 栗子</a></li>
+<li><a href="#orgd5e0451">1.6. 几种转化</a></li>
+<li><a href="#orge523686">1.7. KM 题目</a></li>
+<li><a href="#org92dadab">1.8. 链接</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga489ffe" class="outline-2">
+<h2 id="orga489ffe"><span class="section-number-2">1</span> 求最大权二分匹配的KM算法</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orga13ccb2" class="outline-3">
+<h3 id="orga13ccb2"><span class="section-number-3">1.1</span> 简单回顾</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><b>匹配</b> 给定一个二分图G，M为G边集的一个子集，如果M满足当中的任意两条边都不依附于同一个顶点，则称M是一个匹配 。</li>
+<li><b>极大匹配(Maximal Matching)</b> 是指在当前已完成的匹配下,无法再通过增加未完成匹配的边的方式来增加匹配的边数。</li>
+<li><b>最大匹配(maximum matching)</b>  所有极大匹配当中边数最大的一个匹配。选择这样的边数最大的子集称为图的最大匹配问题。</li>
+
+<li><b>完全匹配/完备匹配</b> 如果一个匹配中，图中的每个顶点都和图中某条边相关联，则称此匹配为完全匹配 ，也称作完备匹配。</li>
+<li><b>完美匹配</b> 如果所有点都在匹配边上，称这个最大匹配是完美匹配。</li>
+<li>求二分图最大匹配可以用最大流( \(Maximal Flow\) )或者匈牙利算法( \(Hungarian Algorithm\) )</li>
+<li><b>等价子图</b> 设  \(G(V,E)\) 为二部图， \(G'(V,E')\) 为二部图的子图。如果对于 \(G'\) 中的任何边&lt; \(x,y\) &gt;满足， \(L(x)+ L(y)== W_{x,y}\) ，我们称 \(G'(V,E')\) 为 \(G(V,E)\) 的等价子图</li>
+
+<li><b>最佳匹配</b> 如果 \(G\) 为加权二分图，则权值和最大的完备匹配称为最佳匹配</li>
+<li>求一个二分图的最佳匹配的普遍算法是 \(KM(Kuhn-Munkres)\) 算法。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org86fd50d" class="outline-3">
+<h3 id="org86fd50d"><span class="section-number-3">1.2</span> 定理：</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+设 \(M\) 是一个带权完全二分图 \(G\) 的一个完备匹配，给每个顶点一个可行顶标(第 \(i\) 个 \(x\) 顶点的可行标用 \(lx[i]\) 表示，第 \(j\) 个 \(y\) 顶点的可行标用 \(ly[j]\) 表示)
+</p>
+
+<p>
+如果对所有的边 \((i,j)\)  \(in\) \(G\) ,都有 \(lx[i]+ly[j]>=w[i,j]\) 成立( \(w[i,j]\) 表示边的权)。
+如果所有满足 \(lx[i]+ly[j]==w[i][j]\) 的边组成的导出子图中存在一个完美匹配，那么这个完美匹配肯定就是原图中的最大权匹配。
+</p>
+
+<p>
+理由很简单：
+ 这个匹配的权值之和恰等于所有顶标的和;
+ 由于上面的那个不等式，另外的任何匹配方案的权值和都不会大于所有顶标的和。
+</p>
+
+
+<ul class="org-ul">
+<li><b>二分图最佳匹配还是二分图匹配，所以跟和匈牙利算法思路差不多</b></li>
+<li><b>二分图是特殊的网络流，最佳匹配相当于求最大（小）费用最大流，所以 \(FF\) 方法也能实现</b></li>
+<li><b>尽量找最大的边进行连边，如果不能则换一条较大的</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org79b0da5" class="outline-3">
+<h3 id="org79b0da5"><span class="section-number-3">1.3</span> 模板</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+改自kuangbin的模板( <b>正确性留给读者自行验证</b> )
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #b22222;">/* </span><span style="color: #b22222;">KM&#31639;&#27861;</span>
+<span style="color: #b22222;"> * &#22797;&#26434;&#24230;O(nx*nx*ny)</span>
+<span style="color: #b22222;"> * &#27714;&#26368;&#22823;&#26435;&#21305;&#37197;</span>
+<span style="color: #b22222;"> * &#33509;&#27714;&#26368;&#23567;&#26435;&#21305;&#37197;&#65292;&#21487;&#23558;&#26435;&#20540;&#21462;&#30456;&#21453;&#25968;&#65292;&#32467;&#26524;&#21462;&#30456;&#21453;&#25968;</span>
+<span style="color: #b22222;"> * &#28857;&#30340;&#32534;&#21495;&#20174;0&#24320;&#22987;</span>
+<span style="color: #b22222;"> */</span>
+<span style="color: #a020f0;">const</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">N</span> = 310;
+<span style="color: #a020f0;">const</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">INF</span> = 0x3f3f3f3f;
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">nx</span>, <span style="color: #a0522d;">ny</span>; <span style="color: #b22222;">//</span><span style="color: #b22222;">&#20004;&#36793;&#30340;&#28857;&#25968;</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">g</span>[N][N];<span style="color: #b22222;">//</span><span style="color: #b22222;">&#20108;&#20998;&#22270;&#25551;&#36848;&#65292;g[x][y]&#34920;&#31034;&#36793;&#26435;&#12290;</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">linker</span>[N], <span style="color: #a0522d;">lx</span>[N], <span style="color: #a0522d;">ly</span>[N]; <span style="color: #b22222;">//</span><span style="color: #b22222;">y&#20013;&#21508;&#28857;&#21305;&#37197;&#29366;&#24577;&#65292; x,y&#20013;&#30340;&#28857;&#26631;&#21495;</span>
+<span style="color: #228b22;">int</span> <span style="color: #a0522d;">slack</span>[N];
+<span style="color: #228b22;">bool</span> <span style="color: #a0522d;">visx</span>[N], <span style="color: #a0522d;">visy</span>[N];
+<span style="color: #228b22;">bool</span> <span style="color: #0000ff;">DFS</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span>) {
+  visx[x] = <span style="color: #008b8b;">true</span>;
+  <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">y</span> = 0; y &lt; ny; y++) {
+    <span style="color: #a020f0;">if</span>(visy[y]) <span style="color: #a020f0;">continue</span>;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">tmp</span> = lx[x] + ly[y] - g[x][y];
+    <span style="color: #a020f0;">if</span>(tmp == 0) {
+      visy[y] = <span style="color: #008b8b;">true</span>;
+      <span style="color: #a020f0;">if</span>(linker[y] == -1 || DFS(linker[y])) {
+        linker[y] = x;
+        <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">true</span>;
+      }
+    } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span>(slack[y] &gt; tmp)
+      slack[y] = tmp;
+  }
+  <span style="color: #a020f0;">return</span> <span style="color: #008b8b;">false</span>;
+}
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">KM</span>() {
+  memset(linker, -1, <span style="color: #a020f0;">sizeof</span>(linker));
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">lx &#21021;&#22987;&#20026; -inf &#65292;ly &#21021;&#22987;&#20026; 0</span>
+  memset(ly, 0, <span style="color: #a020f0;">sizeof</span>(ly));
+  <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; nx; i++) {
+    lx[i] = -INF;  
+    <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = 0; j &lt; ny; j++)
+      <span style="color: #a020f0;">if</span>(g[i][j] &gt; lx[i])
+        lx[i] = g[i][j];
+  }
+  <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">x</span> = 0; x &lt; nx; x++) {
+    <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; ny; i++)
+      slack[i] = INF;  <span style="color: #b22222;">//</span><span style="color: #b22222;">&#21021;&#22987;slack&#20026; inf</span>
+    <span style="color: #a020f0;">while</span>(<span style="color: #008b8b;">true</span>) {
+      memset(visx, <span style="color: #008b8b;">false</span>, <span style="color: #a020f0;">sizeof</span>(visx));
+      memset(visy, <span style="color: #008b8b;">false</span>, <span style="color: #a020f0;">sizeof</span>(visy));
+      <span style="color: #a020f0;">if</span>(DFS(x))<span style="color: #a020f0;">break</span>;
+      <span style="color: #b22222;">//</span><span style="color: #b22222;">&#33509;&#25104;&#21151;&#65288;&#25214;&#21040;&#20102;&#22686;&#24191;&#36712;&#65289;&#65292;&#21017;&#35813;&#28857;&#22686;&#24191;&#23436;&#25104;&#65292;&#36827;&#20837;&#19979;&#19968;&#20010;&#28857;&#30340;&#22686;&#24191;</span>
+      <span style="color: #b22222;">//</span><span style="color: #b22222;">&#33509;&#22833;&#36133;&#65288;&#27809;&#26377;&#25214;&#21040;&#22686;&#24191;&#36712;&#65289;&#65292;&#21017;&#38656;&#35201;&#25913;&#21464;&#19968;&#20123;&#28857;&#30340;&#26631;&#21495;&#65292;&#20351;&#24471;&#22270;&#20013;&#21487;&#34892;&#36793;&#30340;&#25968;&#37327;&#22686;&#21152;&#12290;</span>
+      <span style="color: #b22222;">//</span><span style="color: #b22222;">&#26041;&#27861;&#20026;&#65306;&#23558;&#25152;&#26377;&#22312;&#22686;&#24191;&#36712;&#20013;&#65288;&#23601;&#26159;&#22312;&#22686;&#24191;&#36807;&#31243;&#20013;&#36941;&#21382;&#21040;&#65289;&#30340;X&#26041;&#28857;&#30340;&#26631;&#21495;&#20840;&#37096;&#20943;&#21435;&#19968;&#20010;&#24120;&#25968;d&#65292;</span>
+      <span style="color: #b22222;">//</span><span style="color: #b22222;">&#25152;&#26377;&#22312;&#22686;&#24191;&#36712;&#20013;&#30340;Y&#26041;&#28857;&#30340;&#26631;&#21495;&#20840;&#37096;&#21152;&#19978;&#19968;&#20010;&#24120;&#25968;d</span>
+      <span style="color: #228b22;">int</span> <span style="color: #a0522d;">d</span> = INF;
+      <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; ny; i++)
+        <span style="color: #a020f0;">if</span>(!visy[i] &amp;&amp; d &gt; slack[i])
+          d = slack[i];
+      <span style="color: #a020f0;">if</span>(d == inf)  <span style="color: #a020f0;">return</span> -1;
+      <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; nx; i++)
+        <span style="color: #a020f0;">if</span>(visx[i])
+          lx[i] -= d;
+      <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; ny; i++) {
+        <span style="color: #a020f0;">if</span>(visy[i])ly[i] += d;
+        <span style="color: #a020f0;">else</span> slack[i] -= d;
+      }
+    }
+  }
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">res</span> = 0;
+  <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; ny; i++)
+    <span style="color: #a020f0;">if</span>(linker[i] != -1){
+      res += g[linker[i]][i];
+      <span style="color: #a020f0;">if</span>(g[linker[i]][i] == -inf)  <span style="color: #a020f0;">return</span> -1;
+    }
+  <span style="color: #a020f0;">return</span> res;
+}
+<span style="color: #b22222;">//</span><span style="color: #b22222;">HDU 2255</span>
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>() {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>;
+  <span style="color: #a020f0;">while</span>(scanf(<span style="color: #8b2252;">"%d"</span>, &amp;n) == 1) {
+    <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 0; i &lt; n; i++)
+      <span style="color: #a020f0;">for</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">j</span> = 0; j &lt; n; j++)
+        scanf(<span style="color: #8b2252;">"%d"</span>, &amp;g[i][j]);
+    nx = ny = n;
+    printf(<span style="color: #8b2252;">"%d\n"</span>, KM());
+  }
+  <span style="color: #a020f0;">return</span> 0;
+}
+
+</pre>
+</div>
+<p>
+。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org799dd7d" class="outline-3">
+<h3 id="org799dd7d"><span class="section-number-3">1.4</span> 流程</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+\(Kuhn－Munkras\) 算法流程：
+</p>
+<ol class="org-ol">
+<li>初始化可行顶标的值</li>
+<li>用匈牙利算法寻找完备匹配</li>
+<li>若未找到完备匹配则修改可行顶标的值</li>
+<li>重复 2. 3.直到找到相等子图的完备匹配为止</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orge403664" class="outline-3">
+<h3 id="orge403664"><span class="section-number-3">1.5</span> 栗子</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+初始化时X标杆为该顶点上的最大权重，而Y标杆为0
+</p>
+
+<p>
+<img src="./img/201707280002.jpg" alt="201707280002.jpg">  <img src="./img/201707280001.jpg" alt="201707280001.jpg">
+</p>
+
+<p>
+上图中，有 \(x0  -> y4\)  ; \(x1 -> NULL\) 
+</p>
+
+<p>
+<b>标杆的作用</b> ：
+据传统的算法描述，能够进入二分子图的边的条件为 \(L(x)+L(y)>=weight(x \  y)\) 
+</p>
+
+<p>
+当找不到增广路径时，对于搜索过的路径上的 \(XY\) 点，设该路径上的 \(X\) 顶点集为 \(S\) ， \(Y\) 顶点集为 \(T\) ，对所有 \(xi \in S , yi \notin T\) ，计算 \(d=min{(L(xi)+L(yj)-weight(xi \  yj))}\) ，
+</p>
+
+<p>
+从 \(S\) 集中的 \(X\) 标杆中减去 \(d\) ，并将其加入到 \(T\) 集中的 \(Y\) 的标杆中。
+（ \(xi=xi-d  (x \in S)\) , \(yi=yi+d   (yi \in T)\) ）
+</p>
+
+<p>
+由于 \(S\) 集中的 \(X\) 标杆减少了，而不在 \(T\) 中的 \(Y\) 标杆不变，相当于这两个集合中的 \(L(x)+L(y)\) 变小了，也就是，有新的边可以加入二分子图了。
+</p>
+
+<p>
+从贪心选边的角度看，我们可以为 \(X0\) 选择新的边而抛弃原先的二分子图中的匹配边，也可以为 \(X1\) 选择新的边而抛弃原先的二分子图中的匹配边，
+</p>
+
+<p>
+我们不能同时选择 \(X0\ Y4\) 和 \(X1\ Y4\) ，因为这是一个不合法匹配，这个时候， \(d=min{(L(xi)+L(yj)-weight(xi \ yj))}\) 的意义就在于，我们选择一条新的边，这条边将被加入匹配子图中使得匹配合法，选择这条边形成的匹配子图，与原先的匹配子图加上这条非法边组成的非法匹配子图的权重和（如果它是合法的，它将是最大的）差值最少，即权重最大。
+</p>
+
+<p>
+<b>简而言之</b> 
+原先的不合法匹配（它的权重最大，因为我们总是从权重最大的边找起的）的权重为 \(W\) ，
+新的合法匹配为 \(W'\) ， \(d\) 为 \(min{(W-W’i)}\)
+</p>
+
+<p>
+在这个例子中， \(S= \{ X0, X1 \}，Y= \{ Y4 \}\) ，求出最小值 \(d=L(X1)+L(Y0)-weight(X1 \  Y0)=2\) ，得到新的二分子图
+</p>
+
+<p>
+<img src="./img/201707280003.png" alt="201707280003.png">  <img src="./img/201707280001.jpg" alt="201707280001.jpg">
+</p>
+
+<p>
+重新为 \(X1\) 寻找增广路径，找到 \(X1Y0\) 
+</p>
+
+<p>
+可以看到新的匹配子图的权重为 \(9+6=15\) ，比原先的不合法的匹配的权重 \(9+8=17\) 正好少 \(d=2\) 。
+</p>
+
+<p>
+接下来从 \(X2\) 出发找不到增广路径，其走过的路径如蓝色的路线所示。
+形成的非法匹配子图： \(X0Y4\) ， \(X1Y0\) 及 \(X2Y0\) 的权重和为 \(22\) 。
+</p>
+
+<p>
+在这条路径上，只要为 \(S=\{ X0，X1，X2 \}\) 中的任意一个顶点找到新的匹配，就可以解决这个问题，于是又开始求 \(d\) 。
+</p>
+
+<p>
+ \(d=L(X0)+L(Y2)-weight(X0 \  Y2)=L(X2)+L(Y1)-weight(X2 \  Y1)=1\) .
+新的二分子图为：
+</p>
+
+<p>
+<img src="./img/201707280004.png" alt="201707280004.png">   <img src="./img/201707280001.jpg" alt="201707280001.jpg">
+</p>
+
+<p>
+重新为 \(X2\) 寻找增广路径，如果我们使用的是深搜，会得到路径： \(X2->Y0->X1->Y4->X0->Y2\) ，
+即奇数条边而删除偶数条边，新的匹配子图中由这几个顶点得到的新的权重为 \(21\) ；
+</p>
+
+<p>
+如果使用的是宽搜，会得到路径 \(X2Y1\) ，另上原先的两条匹配边，权重为 \(21\) 。
+</p>
+
+<p>
+假设我们使用的是宽搜，得到的新的匹配子图为：
+</p>
+
+<p>
+<img src="./img/201707280005.png" alt="201707280005.png">  <img src="./img/201707280001.jpg" alt="201707280001.jpg">
+</p>
+
+<p>
+接下来依次类推，直到为X4找到一个匹配点。
+</p>
+
+<p>
+ \(KM\) 算法的最大特点在于利用标杆和权重来生成一个二分子图，在该二分子图上面找最大匹配，
+而且，当些仅当找到完备匹配，才能得到最佳匹配。
+</p>
+
+<p>
+标杆和权重的作用在于限制新边的加入，使得加入的新边总是能为子图添加匹配数，同时又令权重和得到最大的提高。
+</p>
+
+<hr>
+
+<p>
+\(KM\) 算法优势仅仅在于编程容易。
+</p>
+
+<p>
+<del>KM算法也有其不可避免的局限性，就是必须用邻接矩阵来表示。这样会浪费很多的空间，尤其是图相当稀疏的时候。</del>
+而对于十分稀疏的图，许多优秀的费用流算法效率是很高的。
+这并不说明KM算法不如费用流，毕竟在信息学竞赛中，编程的复杂度也是一个相当重要的需要考虑的因素
+</p>
+
+<p>
+&#x2013;Byvoid
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5e0451" class="outline-3">
+<h3 id="orgd5e0451"><span class="section-number-3">1.6</span> 几种转化</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>最小权值匹配，取反</li>
+<li>没有完备匹配，赋0</li>
+<li>边权之积最大，取对数</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge523686" class="outline-3">
+<h3 id="orge523686"><span class="section-number-3">1.7</span> KM 题目</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+<a href="http://acm.hdu.edu.cn/diy/contest_show.php?cid=12698">http://acm.hdu.edu.cn/diy/contest_show.php?cid=12698</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+<a href="https://vjudge.net/contest/27855">https://vjudge.net/contest/27855</a>
+</p>
+
+<p>
+[kuangbin]KM匹配 
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org92dadab" class="outline-3">
+<h3 id="org92dadab"><span class="section-number-3">1.8</span> 链接</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li><a href="http://blog.sina.com.cn/s/blog_691ce2b701016reh.html">http://blog.sina.com.cn/s/blog_691ce2b701016reh.html</a></li>
+</ul>
+
+<p>
+文字叙述了个栗子，没图！具体过程挺wo详mei细you的kan
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/xcw0754/p/4719177.html">http://www.cnblogs.com/xcw0754/p/4719177.html</a></li>
+</ul>
+
+<p>
+提供了一份改自kuangbin的板模
+</p>
+
+<ul class="org-ul">
+<li><a href="http://blog.csdn.net/pi9nc/article/details/12250247">http://blog.csdn.net/pi9nc/article/details/12250247</a></li>
+</ul>
+
+<p>
+注释挺详细的
+</p>
+
+<ul class="org-ul">
+<li><a href="http://972169909-qq-com.iteye.com/blog/1184514">http://972169909-qq-com.iteye.com/blog/1184514</a></li>
+</ul>
+
+<p>
+题目列表，（对，题wo目zhi就zuo是le来ji自dao这里）
+</p>
+
+<ul class="org-ul">
+<li><a href="http://blog.csdn.net/x_y_q_/article/details/51927054">http://blog.csdn.net/x_y_q_/article/details/51927054</a></li>
+</ul>
+
+<p>
+有图有栗子有题目，好评
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/Lanly/p/6291214.html">http://www.cnblogs.com/Lanly/p/6291214.html</a></li>
+</ul>
+
+<p>
+有图+1
+</p>
+
+<ul class="org-ul">
+<li><a href="http://cuitianyi.com/blog/%E6%B1%82%E6%9C%80%E5%A4%A7%E6%9D%83%E4%BA%8C%E5%88%86%E5%8C%B9%E9%85%8D%E7%9A%84km%E7%AE%97%E6%B3%95">http://cuitianyi.com/blog/求最大权二分匹配的km算法</a></li>
+</ul>
+
+<p>
+关于复杂度
+</p>
+<pre class="example">
+值得注意的一点是，按照上述d的定义去求d的话需要O(N^2)的时间，因为d需要被求O(N^2)次，这就成了算法
+的瓶颈。可以这样优化：设slack[j]表示右边的点j的所有不在导出子图的边对应的lx[i]+ly[j]-w[i][j]的最小值，在
+find过程中，若某条边不在导出子图中就用它对相应的slack值进行更新。然后求d只要用O(N)的时间找到slack
+中的最小值就可以了。
+</pre>
+<p>
+ORZ dalao
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.byvoid.com/zhs/blog/match-km">https://www.byvoid.com/zhs/blog/match-km</a></li>
+</ul>
+
+<p>
+KM算法的几种转化
+</p>
+
+<p>
+求最小(大)权匹配的费用流建模方法
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/longdouhzt/archive/2012/05/20/2510753.html">http://www.cnblogs.com/longdouhzt/archive/2012/05/20/2510753.html</a></li>
+</ul>
+
+<p>
+关于 FF 
+</p>
+<ul class="org-ul">
+<li>《算法竞赛入门经典 训练指南》 P348</li>
+
+<li><a href="http://www.nocow.cn/index.php/Kuhn-Munkres%E7%AE%97%E6%B3%95">http://www.nocow.cn/index.php/Kuhn-Munkres算法</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<algorithm>
+#include<stack>
+#include<string.h>
+#include<iostream>
+#include<vector>
+using namespace std;
+int dfn[1005],low[1005];
+vector<int> G[1005],bcc[1005];
+int Bcc;
+struct edge{
+	int u,v;
+};
+stack<int> s;
+int son;
+int index;
+int iscut[1005];
+int bccno[1005];
+int times=1;
+int cnt=1;
+int group[300];
+void tarjan(int u,int fa)
+{
+
+    dfn[u]=low[u]=times++;
+    s.push(u);
+    bool flag=true;
+    for(int i=0;i<G[u].size();i++)
+    {
+        if(flag&&G[u][i]==fa)
+        {
+            flag=false;
+            continue;
+        }
+
+        if(!dfn[G[u][i]])
+        {
+            tarjan(G[u][i],u);
+            low[u]=min(low[u],low[G[u][i]]);
+        }
+        else
+        {
+            low[u]=min(low[u],dfn[G[u][i]]);
+        }
+    }
+    if(low[u]==dfn[u])
+    {
+        int v;
+        do
+        {
+            v=s.top();
+            s.pop();
+            group[v]=cnt;
+        }while(v!=u);
+        cnt++;
+    }
+}

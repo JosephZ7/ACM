@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<algorithm>
+#include<stack>
+#include<string.h>
+#include<iostream>
+#include<vector>
+using namespace std;
+int dfn[1005],low[1005];
+vector<int> G[1005],bcc[1005];
+int Bcc;
+struct edge{
+	int u,v;
+};
+stack<edge> s;
+int son;
+int index;
+int iscut[1005];
+int bccno[1005];
+void tarjan(int u){
+	index++;
+	dfn[u]=low[u]=index;
+	for(int i=0;i<G[u].size();i++){
+		int v=G[u][i];
+		if(!dfn[v]){
+			s.push(edge{u,v});
+			tarjan(v);
+			low[u]=min(low[v],low[u]);
+			if(low[v]>=dfn[u]){
+				iscut[u]++;
+				Bcc++;
+				bcc[Bcc].clear();
+			if(u==1){
+				son++;
+				}
+				while(!s.empty()){
+					edge tmp=s.top();
+					s.pop();
+					if(bccno[tmp.u]!=Bcc){
+						bccno[tmp.u]=Bcc;
+						bcc[Bcc].push_back(tmp.u);
+					}
+					if(bccno[tmp.v]!=Bcc){
+						bccno[tmp.v]=Bcc;
+						bcc[Bcc].push_back(tmp.v);
+					}
+					if(u==tmp.u&&v==tmp.v) break;
+				}
+			}
+		}
+		else if(dfn[v]<dfn[u]){
+			s.push(edge{u,v});
+			low[u]=min(low[u],dfn[v]);
+		}
+	}
+	if(son>1){
+		iscut[1]=true;
+	}
+}
